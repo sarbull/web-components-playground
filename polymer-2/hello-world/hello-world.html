@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./awesome-mixin.html">
 
 <dom-module id="hello-world">
   <template>
@@ -18,50 +18,6 @@
   </template>
 
   <script>
-    const AwesomeMixin = (superClass) => {
-      return class extends superClass {
-        static get properties() {
-          return {
-            hasLoaded: {
-              type: Boolean,
-              value: false
-            }
-          };
-        }
-
-        checkIfAllPropsHaveValues(properties) {
-          let result = true;
-
-          Array.from(properties).forEach(p => {
-            if (p === undefined) {
-              result = false;
-            }
-          });
-
-          return result;
-        }
-
-        static getInitObserver(properties) {
-          const props = Object.keys(properties);
-
-          return `init(${props.join(',')})`;
-        }
-
-        init() {
-          if(this.checkIfAllPropsHaveValues(arguments)) {
-            console.log('i have all props = ', this.checkIfAllPropsHaveValues(arguments));
-
-            if (this.final) {
-              this.hasLoaded = true;
-
-              this.final();
-            }
-          }
-        }
-      }
-    };
-
-
     /**
      * `hello-world`
      * Hello World Component
@@ -70,7 +26,7 @@
      * @polymer
      * @demo demo/index.html
      */
-    class HelloWorld extends AwesomeMixin(Polymer.Element) {
+    class HelloWorld extends AwesomeMixin {
       static get is() {
         return 'hello-world';
       }

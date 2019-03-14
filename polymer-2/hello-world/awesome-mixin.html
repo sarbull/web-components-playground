@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="awesome-mixin">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <template is="dom-if" if="{{ !hasLoaded }}">
+      Loading...
+    </template>
+  </template>
+
+  <script>
+    /**
+     * `awesome-mixin`
+     * Awesome Mixin Component
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class AwesomeMixin extends Polymer.Element {
+      static get is() {
+        return 'awesome-mixin';
+      }
+
+      static get properties() {
+        return {
+          hasLoaded: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+
+      checkIfAllPropsHaveValues(properties) {
+        let result = true;
+
+        Array.from(properties).forEach(p => {
+          if (p === undefined) {
+            result = false;
+          }
+        });
+
+        return result;
+      }
+
+      static getInitObserver(properties) {
+        const props = Object.keys(properties);
+
+        return `init(${props.join(',')})`;
+      }
+
+      init() {
+        if(this.checkIfAllPropsHaveValues(arguments)) {
+          console.log('i have all props = ', this.checkIfAllPropsHaveValues(arguments));
+
+          if (this.final) {
+            this.hasLoaded = true;
+
+            this.final();
+          }
+        }
+      }
+    }
+
+    window.customElements.define(AwesomeMixin.is, AwesomeMixin);
+  </script>
+</dom-module>
