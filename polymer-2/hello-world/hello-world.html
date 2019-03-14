@@ -1,7 +1,7 @@
 <link rel="import" href="./awesome-mixin.html">
 
 <dom-module id="hello-world">
-  <template>
+  <!-- <template>
     <style>
       :host {
         display: block;
@@ -11,7 +11,7 @@
     <template is="dom-if" if="{{ hasLoaded }}">
       <h2>Hello [[prop1]]!</h2>
     </template>
-  </template>
+  </template> -->
 
   <script>
     /**
@@ -22,8 +22,9 @@
      * @polymer
      * @demo demo/index.html
      */
-    // (function() {
-    //   let memoizedTemplate;
+
+    (function() {
+      let memoizedTemplate;
 
       class HelloWorld extends AwesomeMixin {
         static get is() {
@@ -49,19 +50,23 @@
           ];
         }
 
-        // static get template() {
-          // if (!memoizedTemplate) {
-          //   memoizedTemplate = Polymer.DomModule.import(this.is, 'template');
+        static get template() {
+          if (!memoizedTemplate) {
+            memoizedTemplate = AwesomeMixin.template.cloneNode(true);
 
-          // let superTemplateContents = document.importNode(AwesomeMixin.template.content, true);
+            let template = document.createElement('template');
+            template.setAttribute('is', 'dom-if');
+            template.setAttribute('if', '{{ hasLoaded }}');
 
-          //   let footer = memoizedTemplate.content.querySelector('#component');
+            template.innerHTML = `
+              <h2>Hello [[prop1]]!</h2>
+            `;
 
-          //   memoizedTemplate.content.insertBefore(superTemplateContents, footer);
-          // }
+            memoizedTemplate.content.appendChild(template);
+          }
 
-          // return memoizedTemplate;
-        // }
+          return memoizedTemplate;
+        }
 
         connectedCallback() {
           super.connectedCallback();
@@ -81,6 +86,6 @@
       }
 
       window.customElements.define(HelloWorld.is, HelloWorld);
-    // })();
+    })();
   </script>
 </dom-module>
