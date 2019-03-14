@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="hello-world">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `hello-world`
+     * Hello World Component
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class HelloWorld extends Polymer.Element {
+      static get is() { return 'hello-world'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'hello-world'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(HelloWorld.is, HelloWorld);
+  </script>
+</dom-module>
