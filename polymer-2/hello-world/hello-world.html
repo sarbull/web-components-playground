@@ -11,10 +11,6 @@
     <template is="dom-if" if="{{ hasLoaded }}">
       <h2>Hello [[prop1]]!</h2>
     </template>
-
-    <template is="dom-if" if="{{ !hasLoaded }}">
-      Loading...
-    </template>
   </template>
 
   <script>
@@ -26,47 +22,65 @@
      * @polymer
      * @demo demo/index.html
      */
-    class HelloWorld extends AwesomeMixin {
-      static get is() {
-        return 'hello-world';
+    // (function() {
+    //   let memoizedTemplate;
+
+      class HelloWorld extends AwesomeMixin {
+        static get is() {
+          return 'hello-world';
+        }
+
+        static get properties() {
+          return {
+            prop1: {
+              type: String,
+              value: 'hello-world'
+            },
+            prop2: {
+              type: String,
+              value: undefined
+            }
+          };
+        }
+
+        static get observers() {
+          return [
+            this.getInitObserver(this.properties)
+          ];
+        }
+
+        // static get template() {
+          // if (!memoizedTemplate) {
+          //   memoizedTemplate = Polymer.DomModule.import(this.is, 'template');
+
+          // let superTemplateContents = document.importNode(AwesomeMixin.template.content, true);
+
+          //   let footer = memoizedTemplate.content.querySelector('#component');
+
+          //   memoizedTemplate.content.insertBefore(superTemplateContents, footer);
+          // }
+
+          // return memoizedTemplate;
+        // }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          console.log('connectedCallback()');
+        }
+
+        ready() {
+          super.ready();
+
+          console.log('ready()');
+        }
+
+        final() {
+          console.log('final()');
+        }
       }
 
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'hello-world'
-          },
-          prop2: {
-            type: String,
-            value: undefined
-          }
-        };
-      }
-
-      static get observers() {
-        return [
-          this.getInitObserver(this.properties)
-        ];
-      }
-
-      connectedCallback() {
-        super.connectedCallback();
-
-        console.log('connectedCallback()');
-      }
-
-      ready() {
-        super.ready();
-
-        console.log('ready()');
-      }
-
-      final() {
-        console.log('final()');
-      }
-    }
-
-    window.customElements.define(HelloWorld.is, HelloWorld);
+      window.customElements.define(HelloWorld.is, HelloWorld);
+    // })();
   </script>
 </dom-module>
