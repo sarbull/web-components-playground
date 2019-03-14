@@ -11,6 +11,38 @@
   </template>
 
   <script>
+    const AwesomeMixin = (superClass) => {
+      return class extends superClass {
+        checkIfAllPropsHaveValues(properties) {
+          let result = true;
+          Array.from(properties).forEach(p => {
+            if (p === undefined) {
+              result = false;
+            }
+          });
+
+          return result;
+        }
+
+        static getInitObserver(properties) {
+          const props = Object.keys(properties);
+
+          return `init(${props.join(',')})`;
+        }
+
+        init() {
+          if(this.checkIfAllPropsHaveValues(arguments)) {
+            console.log('i have all props = ', this.checkIfAllPropsHaveValues(arguments));
+
+            if (this.final) {
+              this.final();
+            }
+          }
+        }
+      }
+    };
+
+
     /**
      * `hello-world`
      * Hello World Component
@@ -19,15 +51,41 @@
      * @polymer
      * @demo demo/index.html
      */
-    class HelloWorld extends Polymer.Element {
+    class HelloWorld extends AwesomeMixin(Polymer.Element) {
       static get is() { return 'hello-world'; }
       static get properties() {
         return {
           prop1: {
             type: String,
             value: 'hello-world'
+          },
+          prop2: {
+            type: String,
+            value: undefined
           }
         };
+      }
+
+      static get observers() {
+        return [
+          this.getInitObserver(this.properties)
+        ];
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+
+        console.log('connectedCallback()');
+      }
+
+      ready() {
+        super.ready();
+
+        console.log('ready()');
+      }
+
+      final() {
+        console.log('final()');
       }
     }
 

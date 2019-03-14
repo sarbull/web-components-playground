@@ -26,5 +26,15 @@
         </template>
       </demo-snippet>
     </div>
+
+    <script type="module">
+      setTimeout(() => {
+        let helloWorld = document.querySelector('hello-world');
+
+        helloWorld.prop2 = 'prop2';
+
+        console.log(helloWorld);
+      }, 1200)
+    </script>
   </body>
 </html>
