@@ -7,14 +7,31 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+
+    <template is="dom-if" if="{{ hasLoaded }}">
+      <h2>Hello [[prop1]]!</h2>
+    </template>
+
+    <template is="dom-if" if="{{ !hasLoaded }}">
+      Loading...
+    </template>
   </template>
 
   <script>
     const AwesomeMixin = (superClass) => {
       return class extends superClass {
+        static get properties() {
+          return {
+            hasLoaded: {
+              type: Boolean,
+              value: false
+            }
+          };
+        }
+
         checkIfAllPropsHaveValues(properties) {
           let result = true;
+
           Array.from(properties).forEach(p => {
             if (p === undefined) {
               result = false;
@@ -35,6 +52,8 @@
             console.log('i have all props = ', this.checkIfAllPropsHaveValues(arguments));
 
             if (this.final) {
+              this.hasLoaded = true;
+
               this.final();
             }
           }
@@ -52,7 +71,10 @@
      * @demo demo/index.html
      */
     class HelloWorld extends AwesomeMixin(Polymer.Element) {
-      static get is() { return 'hello-world'; }
+      static get is() {
+        return 'hello-world';
+      }
+
       static get properties() {
         return {
           prop1: {
