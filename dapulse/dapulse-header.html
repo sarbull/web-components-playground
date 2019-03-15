@@ -1,0 +1,50 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="dapulse-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .dapulse-header {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100%;
+
+        height:var(--header-height);
+        box-shadow: var(--gray-shadow);
+        border-bottom: 1px solid var(--dark-gray);
+        background: var(--light-gray);
+      }
+    </style>
+    <div class="dapulse-header">
+      <span>dapulse-header</span>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `dapulse-header`
+     * Entry point of the main application
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class DapulseHeader extends Polymer.Element {
+      static get is() { return 'dapulse-header'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'dapulse-header'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(DapulseHeader.is, DapulseHeader);
+  </script>
+</dom-module>

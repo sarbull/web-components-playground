@@ -1,0 +1,43 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="dapulse-logo">
+  <template>
+    <style>
+      :host {
+        display: block;
+        height:60%;
+        align-self: center;
+      }
+
+      img {
+        height:100%;
+      }
+    </style>
+
+    <img src="../assets/logo.png">
+  </template>
+
+  <script>
+    /**
+     * `dapulse-logo`
+     * Entry point of the main application
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class DapulseLogo extends Polymer.Element {
+      static get is() { return 'dapulse-logo'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'dapulse-logo'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(DapulseLogo.is, DapulseLogo);
+  </script>
+</dom-module>

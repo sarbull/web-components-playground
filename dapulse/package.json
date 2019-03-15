@@ -1,0 +1,13 @@
+{
+  "name": "dapulse-ui",
+  "version": "0.0.0",
+  "description": "Entry point of the main application",
+  "scripts": {
+    "start": "polymer serve -o"
+  },
+  "keywords": [
+    "dapulse-ui"
+  ],
+  "author": "Sirbu Nicolae-Cezar",
+  "license": "MIT"
+}

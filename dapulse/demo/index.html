@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>dapulse-ui demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="../dapulse-ui.html">
+    <style>
+      html, body {
+        margin:0;
+        padding:0;
+      }
+    </style>
+  </head>
+  <body>
+    <dapulse-ui></dapulse-ui>
+
+    <script>
+
+      setTimeout(() => {
+        let daPulseUi = document.querySelector('dapulse-ui');
+
+        daPulseUi.prop2 = 'prop2';
+      }, 1200)
+
+    </script>
+  </body>
+</html>
