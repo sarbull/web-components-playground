@@ -1,0 +1,65 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="charisma-loader">
+  <template>
+    <style>
+      :host {
+        display: block;
+        height:100%;
+      }
+
+      .centered {
+        display: flex;           /* establish flex container */
+        flex-direction: column;  /* make main axis vertical */
+        justify-content: center; /* center items vertically, in this case */
+        align-items: center;     /* center items horizontally, in this case */
+        height:100%;
+      }
+
+      .lds-dual-ring {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin: 1px;
+        border-radius: 50%;
+        border: 5px solid var(--dark-gray);
+        border-color: var(--dark-gray) transparent var(--dark-gray) transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <div class="centered">
+      <div class="lds-dual-ring"></div>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `charisma-loader`
+     * Entry point of the main application
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class charismaLoader extends Polymer.Element {
+      static get is() { return 'charisma-loader'; }
+    }
+
+    window.customElements.define(charismaLoader.is, charismaLoader);
+  </script>
+</dom-module>

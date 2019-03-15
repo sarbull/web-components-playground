@@ -1,0 +1,68 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+
+<dom-module id="has-loaded">
+  <!-- <template>
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+  </template> -->
+
+  <script>
+    /**
+     * `has-loaded`
+     * Awesome Mixin Component
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class HasLoaded extends Polymer.Element {
+      static get is() {
+        return 'has-loaded';
+      }
+
+      static get properties() {
+        return {
+          hasLoaded: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+
+      checkIfAllPropsHaveValues(properties) {
+        let result = true;
+
+        Array.from(properties).forEach(p => {
+          if (p === undefined) {
+            result = false;
+          }
+        });
+
+        return result;
+      }
+
+      static getInitObserver(properties) {
+        const props = Object.keys(properties);
+
+        return `init(${props.join(',')})`;
+      }
+
+      init() {
+        if(this.checkIfAllPropsHaveValues(arguments)) {
+          console.log('i have all props = ', this.checkIfAllPropsHaveValues(arguments));
+
+          if (this.final) {
+            this.hasLoaded = true;
+
+            this.final();
+          }
+        }
+      }
+    }
+
+    window.customElements.define(HasLoaded.is, HasLoaded);
+  </script>
+</dom-module>

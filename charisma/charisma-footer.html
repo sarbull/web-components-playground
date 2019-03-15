@@ -1,0 +1,56 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./charisma-logo.html">
+
+<dom-module id="charisma-footer">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .charisma-footer {
+        box-shadow: var(--gray-shadow);
+        border-top:1px solid var(--dark-gray);
+        background: var(--light-gray);
+        height:var(--footer-height);
+
+        display: flex;           /* establish flex container */
+        flex-direction: column;  /* make main axis vertical */
+        justify-content: center; /* center items vertically, in this case */
+
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+
+    <div class="charisma-footer">
+      <charisma-logo></charisma-logo>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `charisma-footer`
+     * Entry point of the main application
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class charismaFooter extends Polymer.Element {
+      static get is() { return 'charisma-footer'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'charisma-footer'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(charismaFooter.is, charismaFooter);
+  </script>
+</dom-module>

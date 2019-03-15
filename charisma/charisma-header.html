@@ -1,0 +1,63 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="charisma-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .charisma-header {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100%;
+
+        height:var(--header-height);
+        box-shadow: var(--gray-shadow);
+        border-bottom: 1px solid var(--dark-gray);
+        background: var(--light-gray);
+      }
+
+      .charisma-header span {
+        line-height: var(--header-height);
+      }
+
+      .charisma-header > * {
+        margin-left:5px;
+        margin-right:5px;
+      }
+    </style>
+
+    <div class="charisma-header">
+      <span>[[title]]</span>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `charisma-header`
+     * Entry point of the main application
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class charismaHeader extends Polymer.Element {
+      static get is() {
+        return 'charisma-header';
+      }
+
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: undefined
+          }
+        };
+      }
+    }
+
+    window.customElements.define(charismaHeader.is, charismaHeader);
+  </script>
+</dom-module>
