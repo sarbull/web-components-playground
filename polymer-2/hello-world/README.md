@@ -9,7 +9,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ## Viewing Your Element
 
 ```
-$ polymer serve
+$ polymer serve -o --proxy-target http://localhost:8080 --proxy-path api
 ```
 
 ## Running Tests
