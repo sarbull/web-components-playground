@@ -3,6 +3,7 @@
 <link rel="import" href="./charisma-header.html">
 <link rel="import" href="./charisma-footer.html">
 <link rel="import" href="./charisma-loader.html">
+<link rel="import" href="./charisma-dashboard.html">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link href="./variables.css" rel="stylesheet">
 
@@ -22,7 +23,8 @@
       }
 
       .fade-in {
-        animation: opacity 0.5s
+        animation: opacity 0.5s;
+        height:100%;
       }
 
       @keyframes opacity {
@@ -37,9 +39,9 @@
 
     <template is="dom-if" if="{{ hasLoaded }}">
       <div class="fade-in">
-        <charisma-header title="{{ title }}"></charisma-header>
+        <charisma-header app-title="{{ appTitle }}"></charisma-header>
 
-        <h2>Hello [[prop1]]!</h2>
+        <charisma-dashboard></charisma-dashboard>
 
         <charisma-footer></charisma-footer>
       </div>
@@ -62,7 +64,7 @@
 
       static get properties() {
         return {
-          title: {
+          appTitle: {
             type: String,
             value: undefined
           },

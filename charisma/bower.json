@@ -3,7 +3,8 @@
   "description": "Entry point of the main application",
   "main": "charisma-ui.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "the-grid": "vpusher/the-grid#^1.4.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
