@@ -20,7 +20,8 @@
       .widget > .wrapper {
         margin-top:39px;
         height:calc(100% - 39px);
-        overflow:scroll;
+        overflow:auto;
+        padding:10px;
       }
 
       .charisma-dashboard {
@@ -29,8 +30,8 @@
 
       the-grid > div {
         background: var(--dark-gray);
-        opacity: 0.9;
-        color: white;
+        /* opacity: 0.9; */
+        /* color: white; */
         cursor: move;
         overflow: hidden;
       }
@@ -97,12 +98,19 @@
     </style>
 
     <div class="charisma-dashboard">
-      <the-grid draggable overlappable resizable row-autogrow col-autogrow cell-margin="5">
-        <div class="widget" col= "0" row="0" height="4", width="5">
+      <the-grid draggable overlappable resizable row-autogrow col-autogrow cell-margin="10" col-count="100" row-count="100">
+        <div class="widget" col="0" row="0" height="4" width="5">
           <div class="wrapper">
             <div style="height:1002px;">
               <h1>asasd</h1>
             </div>
+          </div>
+          <span resize="bottom-right" style="height:10px;width:10px;">&nbsp;</span>
+        </div>
+
+        <div class="widget" col="5" row="0" height="2" width="3">
+          <div class="wrapper">
+            <h1>asasd</h1>
           </div>
           <span resize="bottom-right" style="height:10px;width:10px;">&nbsp;</span>
         </div>
